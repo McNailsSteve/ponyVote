@@ -1,6 +1,6 @@
-package de.stephannaegele.demo.repository;
+package de.stephannaegele.ponyVote.repository;
 
-import de.stephannaegele.demo.model.User;
+import de.stephannaegele.ponyVote.model.User;
 import org.springframework.data.repository.CrudRepository;
 
 /**

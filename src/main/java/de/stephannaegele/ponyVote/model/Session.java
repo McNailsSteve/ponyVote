@@ -1,6 +1,6 @@
-package de.stephannaegele.demo.model;
+package de.stephannaegele.ponyVote.model;
 
-import de.stephannaegele.demo.model.interfaces.PersistableEntity;
+import de.stephannaegele.ponyVote.interfaces.PersistableEntity;
 
 import javax.persistence.*;
 import java.time.LocalDate;

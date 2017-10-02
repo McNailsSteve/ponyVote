@@ -1,4 +1,4 @@
-package de.stephannaegele.demo.model.interfaces;
+package de.stephannaegele.ponyVote.interfaces;
 
 import java.time.LocalDate;
 
@@ -10,4 +10,7 @@ public interface PersistableEntity {
     Long getId();
     LocalDate getCreationDate();
     LocalDate getModifiedDate();
+
+    int hashCode();
+    boolean equals(Object o);
 }

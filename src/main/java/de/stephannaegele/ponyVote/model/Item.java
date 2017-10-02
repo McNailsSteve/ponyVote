@@ -1,9 +1,8 @@
-package de.stephannaegele.demo.model;
+package de.stephannaegele.ponyVote.model;
 
-import de.stephannaegele.demo.model.interfaces.PersistableEntity;
+import de.stephannaegele.ponyVote.interfaces.PersistableEntity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -25,7 +24,8 @@ public class Item implements PersistableEntity {
     private Session session;
     @OneToMany
     private Set<User> votees;
-    private User creator;
+
+    //TODO: add security
 
     public Item(String headline, LocalDate date, String summary) {
         this.headline = headline;
@@ -33,11 +33,11 @@ public class Item implements PersistableEntity {
         this.summary = summary;
     }
 
-    public Item(String headline, LocalDate date, String summary, User creator) {
+    public Item(String headline, LocalDate date, String summary, User createdBy) {
         this.headline = headline;
         this.date = date;
         this.summary = summary;
-        this.creator = creator;
+
     }
 
     public String getHeadline() {
@@ -92,6 +92,10 @@ public class Item implements PersistableEntity {
         return null;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public LocalDate getCreationDate() {
         return null;
@@ -102,34 +106,6 @@ public class Item implements PersistableEntity {
         return null;
     }
 
-    public User getCreator() {
-        return null;
-    }
-
-    public User getEditor() {
-        return null;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Item item = (Item) o;
-
-        return id.equals(item.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return id.hashCode();
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Session getSession() {
         return session;
     }
@@ -138,7 +114,33 @@ public class Item implements PersistableEntity {
         this.session = session;
     }
 
-    public void setCreator(User creator) {
-        this.creator = creator;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Item item = (Item) o;
+
+        if (id != null ? !id.equals(item.id) : item.id != null) return false;
+        if (headline != null ? !headline.equals(item.headline) : item.headline != null) return false;
+        if (date != null ? !date.equals(item.date) : item.date != null) return false;
+        if (summary != null ? !summary.equals(item.summary) : item.summary != null) return false;
+        if (priorization != null ? !priorization.equals(item.priorization) : item.priorization != null) return false;
+        if (votes != null ? !votes.equals(item.votes) : item.votes != null) return false;
+        if (session != null ? !session.equals(item.session) : item.session != null) return false;
+        return votees != null ? votees.equals(item.votees) : item.votees == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (headline != null ? headline.hashCode() : 0);
+        result = 31 * result + (date != null ? date.hashCode() : 0);
+        result = 31 * result + (summary != null ? summary.hashCode() : 0);
+        result = 31 * result + (priorization != null ? priorization.hashCode() : 0);
+        result = 31 * result + (votes != null ? votes.hashCode() : 0);
+        result = 31 * result + (session != null ? session.hashCode() : 0);
+        result = 31 * result + (votees != null ? votees.hashCode() : 0);
+        return result;
     }
 }
