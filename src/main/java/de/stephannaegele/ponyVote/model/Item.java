@@ -27,6 +27,11 @@ public class Item implements PersistableEntity {
 
     //TODO: add security
 
+
+    public Item() {
+        super();
+    }
+
     public Item(String headline, LocalDate date, String summary) {
         this.headline = headline;
         this.date = date;

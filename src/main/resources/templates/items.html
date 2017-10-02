@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Items</title>
+</head>
+<body>
+    <h1>Items</h1>
+    <h2>List of all Items</h2>
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>Headline</td>
+            <td>Summary</td>
+        </tr>
+        <!--/*@thymesVar id="id" type="de.stephannaegele.ponyVote.model.Item"*/-->
+        <tr th:each="item : ${items}">
+            <td th:text="${item.id}"></td>
+        </tr>
+    </table>
+
+
+</body>
+</html>
