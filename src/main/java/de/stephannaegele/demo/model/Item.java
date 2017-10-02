@@ -25,6 +25,20 @@ public class Item implements PersistableEntity {
     private Session session;
     @OneToMany
     private Set<User> votees;
+    private User creator;
+
+    public Item(String headline, LocalDate date, String summary) {
+        this.headline = headline;
+        this.date = date;
+        this.summary = summary;
+    }
+
+    public Item(String headline, LocalDate date, String summary, User creator) {
+        this.headline = headline;
+        this.date = date;
+        this.summary = summary;
+        this.creator = creator;
+    }
 
     public String getHeadline() {
         return headline;
@@ -110,5 +124,21 @@ public class Item implements PersistableEntity {
     @Override
     public int hashCode() {
         return id.hashCode();
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
     }
 }

@@ -33,6 +33,11 @@ public class Session implements PersistableEntity {
     private LocalDate creationDate;
     private LocalDate modifiedDate;
 
+    public Session(String headline, Set<Item> items) {
+        this.headline = headline;
+        this.items = items;
+    }
+
     public LocalDate getSessionDate() {
         return sessionDate;
     }
@@ -114,6 +119,10 @@ public class Session implements PersistableEntity {
 
     public void setModifiedDate(LocalDate modifiedDate) {
         this.modifiedDate = modifiedDate;
+    }
+
+    public void addItem(Item item) {
+        this.items.add(item);
     }
 
     @Override
