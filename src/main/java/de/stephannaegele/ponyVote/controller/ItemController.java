@@ -17,7 +17,7 @@ public class ItemController {
     @RequestMapping("/items")
     public String getItem(Model model) {
 
-        model.addAttribute("item", itemRepository.findAll());
+        model.addAttribute("items", itemRepository.findAll());
 
         return "items";
     }

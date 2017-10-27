@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>Items</title>
 </head>
@@ -13,9 +14,11 @@
             <td>Headline</td>
             <td>Summary</td>
         </tr>
-        <!--/*@thymesVar id="id" type="de.stephannaegele.ponyVote.model.Item"*/-->
-        <tr th:each="item : ${items}">
-            <td th:text="${item.id}"></td>
+        <!--/*@thymesVar id="item" type="de.stephannaegele.ponyVote.model.Item"*/-->
+        <tr>
+           <td th:each="item : ${items}">
+               <td th:text="item.headline" > head line </td>
+           </td>
         </tr>
     </table>
 
