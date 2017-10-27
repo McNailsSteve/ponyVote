@@ -29,6 +29,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         this.sessionRepository = sessionRepository;
     }
 
+    @SuppressWarnings("NullableProblems")
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         initData();
@@ -52,17 +53,12 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         itemRepository.save(firstItem);
         itemRepository.save(secondItem);
 
-        HashSet<Item> firstSessionItems = new HashSet<Item>();
+        HashSet<Item> firstSessionItems = new HashSet<>();
         firstSessionItems.add(firstItem);
         firstSessionItems.add(secondItem);
 
-
-        //Base-Session
-        Session first = new Session("First", firstSessionItems);
-        // 2nd session
-        Session second = new Session("Second", new HashSet<Item>());
-
-        sessionRepository.save(first);
+        sessionRepository.save(new Session("First", firstSessionItems));
+        sessionRepository.save(new Session("Second", new HashSet<>()));
 
 
     }

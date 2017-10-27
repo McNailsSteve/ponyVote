@@ -10,6 +10,6 @@ public class PonyVoteApplication {
 		SpringApplication.run(PonyVoteApplication.class, args);
 	}
 
-    public static class controller {
+    public static class Controller {
     }
 }
