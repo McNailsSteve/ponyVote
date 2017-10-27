@@ -17,18 +17,18 @@ public class SessionBuilder implements BaseBuilder {
     }
 
     @Override
-    public BaseBuilder withRandomId() {
+    public SessionBuilder withRandomId() {
         session.setId(ThreadLocalRandom.current().nextLong());
         return this;
     }
 
     @Override
-    public BaseBuilder withId(Long id) {
+    public SessionBuilder withId(Long id) {
         session.setId(id);
         return this;
     }
 
-    public BaseBuilder withItems(int numberOfItems) {
+    public SessionBuilder withItems(int numberOfItems) {
         for (int i = 0; i < numberOfItems; i++) {
             session.addItem(new ItemBuilder().withRandomId().withRandomTestHeadline().withDateToday().get());
         }

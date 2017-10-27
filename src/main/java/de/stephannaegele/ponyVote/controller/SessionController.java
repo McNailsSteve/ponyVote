@@ -1,8 +1,10 @@
 package de.stephannaegele.ponyVote.controller;
 
-import de.stephannaegele.ponyVote.repository.SessionRepository;
-import org.springframework.stereotype.Controller;
+import de.stephannaegele.ponyVote.services.SessionService;
+import de.stephannaegele.ponyVote.views.SessionView;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -10,18 +12,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 public class SessionController {
 
-    private SessionRepository sessionRepository;
+    @Autowired
+    private SessionService sessionService;
 
-    public SessionController(SessionRepository sessionRepository) {
-        this.sessionRepository = sessionRepository;
+    public SessionController(SessionService sessionService) {
+        this.sessionService = sessionService;
     }
 
     @RequestMapping("/sessions")
     public String getSessions(Model model) {
 
-        model.addAttribute("sessions", sessionRepository.findAll());
+        model.addAttribute("sessions", sessionService.getAllSessions());
+        return "sessionsView";
 
-        return "sessions";
+    }
 
+    @RequestMapping("/session/{sessionId}")
+    public String getSession(@PathVariable Long sessionId, SessionView sessionView, Model model){
+
+        sessionView = new SessionView(sessionService.getSession(sessionId));
+        model.addAttribute("session", sessionView);
+        return "session";
     }
 }
