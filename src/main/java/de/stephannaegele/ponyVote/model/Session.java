@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -17,7 +18,6 @@ import java.util.Set;
 @Entity
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class Session implements PersistableEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,10 +39,15 @@ public class Session implements PersistableEntity {
     private LocalDate creationDate;
     private LocalDate modifiedDate;
 
+    public Session() {
+        items = new HashSet<>();
+    }
+
     public Session(String headline, Set<Item> items) {
         this.headline = headline;
         this.items = items;
     }
+
 
     public void addItem(Item item) {
         items.add(item);
