@@ -1,7 +1,9 @@
 package de.stephannaegele.ponyVote.model;
 
 import de.stephannaegele.ponyVote.interfaces.PersistableEntity;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,11 +16,14 @@ import java.util.Set;
  */
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Session implements PersistableEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String headline;
+
     @OneToMany(mappedBy = "session")
     private Set<Item> items;
 
@@ -38,4 +43,11 @@ public class Session implements PersistableEntity {
         this.headline = headline;
         this.items = items;
     }
+
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
+
+
 }
