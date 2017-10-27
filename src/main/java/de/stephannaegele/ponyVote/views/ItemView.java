@@ -13,4 +13,8 @@ public class ItemView {
     public String getHeadline() {
         return item.getHeadline();
     }
+
+    public String getId() {
+        return item.getId().toString();
+    }
 }
