@@ -50,14 +50,16 @@ public class ItemServiceTest {
     @Test
     public void getAllItems() throws Exception {
 
+        final int NUMBER_OF_ITEMS = 4;
+
         ArrayList<Item> items = new ArrayList<Item>();
-        items.add(new ItemBuilder().withRandomId().withDate(LocalDate.now()).withHeadline("Test1").get());
-        items.add(new ItemBuilder().withRandomId().withDate(LocalDate.now()).withHeadline("Test2").get());
-        items.add(new ItemBuilder().withRandomId().withDate(LocalDate.now()).withHeadline("Test3").get());
+        for (int i = 0; i < NUMBER_OF_ITEMS; i++) {
+            items.add(new ItemBuilder().withRandomId().withDate(LocalDate.now()).withRandomTestHeadline().get());
+        };
 
         when(itemRepository.findAll()).thenReturn(items);
 
-        assertTrue(items.size() == 3);
+        assertTrue(items.size() == 4);
 
 
     }
