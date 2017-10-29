@@ -1,19 +1,16 @@
 package de.stephannaegele.ponyVote.controller;
 
-import de.stephannaegele.ponyVote.repository.ItemRepository;
+import de.stephannaegele.ponyVote.commands.ItemFormView;
+import de.stephannaegele.ponyVote.domain.Item;
 import de.stephannaegele.ponyVote.services.ItemService;
-import de.stephannaegele.ponyVote.views.ItemView;
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ItemController {
 
-    @Autowired
     private ItemService itemService;
 
     public ItemController(ItemService itemService) {
@@ -21,18 +18,28 @@ public class ItemController {
     }
 
     @RequestMapping("/items")
-    public String getItems(Model model) {
-
+    public String showAllItems(Model model) {
         model.addAttribute("items", itemService.getAllItems());
-
-        return "items";
+        return "item/showAllItems";
     }
 
-    @RequestMapping("/item/{itemId}")
-    public String getItem(@PathVariable Long itemId, Model model) {
-        ItemView view = new ItemView(itemService.getItem(itemId));
-        model.addAttribute("item", view);
+    @RequestMapping(value = "/item/{itemId}")
+    @GetMapping
+    public String showItem(@PathVariable Long itemId, Model model) {
+        model.addAttribute("item", itemService.getItem(itemId));
+        return "item/addEditItem";
+    }
 
-        return "item";
+    @RequestMapping(value = "/item/new")
+    public String showNewItem(Model model) {
+        model.addAttribute("item", new Item());
+        return "item/addEditItem";
+    }
+
+    @RequestMapping(value = "/item/")
+    @PostMapping
+    public String addItem(@ModelAttribute ItemFormView itemFormView) {
+        ItemFormView savedItem = new ItemFormView(itemService.saveItem(itemFormView.mapTo()));
+        return "redirect:/item/" + savedItem.getId();
     }
 }

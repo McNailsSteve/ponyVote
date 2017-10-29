@@ -1,6 +1,6 @@
 package de.stephannaegele.ponyVote.views;
 
-import de.stephannaegele.ponyVote.model.Item;
+import de.stephannaegele.ponyVote.domain.Item;
 
 public class ItemView {
 

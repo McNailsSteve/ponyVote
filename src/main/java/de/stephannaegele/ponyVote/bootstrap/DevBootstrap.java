@@ -1,8 +1,8 @@
 package de.stephannaegele.ponyVote.bootstrap;
 
-import de.stephannaegele.ponyVote.model.Item;
-import de.stephannaegele.ponyVote.model.Session;
-import de.stephannaegele.ponyVote.model.User;
+import de.stephannaegele.ponyVote.domain.Item;
+import de.stephannaegele.ponyVote.domain.Session;
+import de.stephannaegele.ponyVote.domain.User;
 import de.stephannaegele.ponyVote.repository.ItemRepository;
 import de.stephannaegele.ponyVote.repository.SessionRepository;
 import de.stephannaegele.ponyVote.repository.UserRepository;

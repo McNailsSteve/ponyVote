@@ -1,11 +1,7 @@
 package de.stephannaegele.ponyVote.builders;
 
-import de.stephannaegele.ponyVote.interfaces.BaseBuilder;
-import de.stephannaegele.ponyVote.model.Item;
-import de.stephannaegele.ponyVote.model.Session;
-import sun.nio.cs.ext.IBM037;
+import de.stephannaegele.ponyVote.domain.Session;
 
-import javax.xml.ws.Service;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class SessionBuilder implements BaseBuilder {

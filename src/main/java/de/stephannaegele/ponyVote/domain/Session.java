@@ -1,9 +1,8 @@
-package de.stephannaegele.ponyVote.model;
+package de.stephannaegele.ponyVote.domain;
 
-import de.stephannaegele.ponyVote.interfaces.PersistableEntity;
+import de.stephannaegele.ponyVote.controller.SessionController;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;

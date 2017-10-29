@@ -1,7 +1,6 @@
 package de.stephannaegele.ponyVote.builders;
 
-import de.stephannaegele.ponyVote.interfaces.BaseBuilder;
-import de.stephannaegele.ponyVote.model.Item;
+import de.stephannaegele.ponyVote.domain.Item;
 
 import java.time.LocalDate;
 import java.util.concurrent.ThreadLocalRandom;

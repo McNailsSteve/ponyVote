@@ -1,16 +1,16 @@
 package de.stephannaegele.ponyVote.services;
 
-import de.stephannaegele.ponyVote.model.Session;
+import de.stephannaegele.ponyVote.domain.Session;
 import de.stephannaegele.ponyVote.repository.SessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.Set;
 
 @Service
 public class SessionService {
 
-    @Autowired
     private SessionRepository sessionRepository;
 
     public SessionService(SessionRepository sessionRepository) {
@@ -18,7 +18,8 @@ public class SessionService {
     }
 
     public Session getSession(Long sessionId) {
-        return sessionRepository.findById(sessionId).get();
+        Optional<Session> sessionOptional = sessionRepository.findById(sessionId);
+        return sessionOptional.isPresent()?sessionOptional.get():new Session();
     }
 
     public Set<Session> getAllSessions() {

@@ -47,8 +47,7 @@ public class ItemControllerTest {
 
         mockMvc.perform(get("/item/" + TEST_ITEM_ID.toString()))
                 .andExpect(status().isOk())
-                .andExpect(view().name("item"));
+                .andExpect(view().name("item/addEditItem"));
 
     }
-
 }

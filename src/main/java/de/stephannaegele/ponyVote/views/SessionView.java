@@ -1,9 +1,6 @@
 package de.stephannaegele.ponyVote.views;
 
-import de.stephannaegele.ponyVote.model.Session;
-import org.springframework.stereotype.Component;
-
-import java.time.LocalDate;
+import de.stephannaegele.ponyVote.domain.Session;
 
 public class SessionView  {
     private Session session;

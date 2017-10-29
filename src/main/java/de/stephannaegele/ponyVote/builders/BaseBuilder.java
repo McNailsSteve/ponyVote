@@ -1,4 +1,4 @@
-package de.stephannaegele.ponyVote.interfaces;
+package de.stephannaegele.ponyVote.builders;
 
 public interface BaseBuilder {
     BaseBuilder  withRandomId();

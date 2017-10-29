@@ -7,12 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDate;
+
 /**
  * @author Stephan Nägele
  */
 public class SessionController {
 
-    @Autowired
     private SessionService sessionService;
 
     public SessionController(SessionService sessionService) {
@@ -34,4 +35,6 @@ public class SessionController {
         model.addAttribute("session", sessionView);
         return "session";
     }
+
+
 }

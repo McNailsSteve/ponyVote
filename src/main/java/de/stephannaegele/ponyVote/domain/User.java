@@ -1,10 +1,7 @@
-package de.stephannaegele.ponyVote.model;
+package de.stephannaegele.ponyVote.domain;
 
-import de.stephannaegele.ponyVote.interfaces.PersistableEntity;
+import de.stephannaegele.ponyVote.controller.SessionController;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +15,7 @@ import java.time.LocalDate;
  */
 @Data
 @Entity
-public class User implements PersistableEntity{
+public class User implements PersistableEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
