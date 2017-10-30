@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -24,8 +25,8 @@ public class ItemService {
         return itemOptional.isPresent()?itemOptional.get():new Item();
     }
 
-    public Set<Item> getAllItems() {
-        return (Set<Item>) itemRepository.findAll();
+    public List<Item> getAllItems() {
+        return (List<Item>) itemRepository.findAll();
     }
 
     public Item saveItem(Item item) {

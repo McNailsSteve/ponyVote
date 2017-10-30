@@ -58,8 +58,6 @@ public class ItemServiceTest {
         when(itemRepository.findAll()).thenReturn(items);
 
         assertTrue(items.size() == 4);
-
-
     }
 
 }
