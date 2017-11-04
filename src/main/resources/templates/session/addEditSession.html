@@ -7,12 +7,47 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
 </head>
 <body>
     <h1>Eigentümerversammlung</h1>
-    <form method="post" th:object="${session}"></form>
+    <div class="container" style="margin-top: 20px">
+        <!--/*@thymesVar id="session" type="de.stephannaegele.ponyVote.views.SessionView"*/-->
+        <form method="post" th:object="${session}">
+            <div class="form-group"> <!-- Date input -->
+                <label class="control-label" th:text="${session.sessionDate}" for="date">Date</label>
+                <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+            </div>
+            <div class="form-group"> <!-- Submit button -->
+                <button class="btn btn-primary " name="submit" type="submit">Submit</button>
+            </div>
 
+        </form>
+    </div>
+    <script>
+        $(document).ready(function(){
+            var date_input=$('input[name="date"]'); //our date input has the name "date"
+            var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+            date_input.datepicker({
+                format: "dd/mm/yyyy",
+                maxViewMode: 2,
+                todayBtn: "linked",
+                clearBtn: true,
+                orientation: "bottom left",
+                calendarWeeks: true,
+                todayHighlight: true
+            })
+        })
+    </script>
 </body>
 </html>

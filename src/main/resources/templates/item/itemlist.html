@@ -34,7 +34,7 @@
                                 <tr th:each="item : ${sessionItems}">
                                     <td th:text="${item.id}">id</td>
                                     <td th:text="${item.headline}">headline</td>
-                                    <td th:text="${item.date}">date</td>
+                                    <td th:text="${item.sessionDate}">sessionDate</td>
                                     <td>
                                         <a th:href="@{'/item/' +${item.id}}"><input type="button" class="btn btn-success btn-sm" value="Ansicht"></a>
                                         <a th:href="@{'/item/' +${item.id} + '/edit'}"><input type="button" class="btn btn-primary btn-sm" value="Bearbeiten"></a>

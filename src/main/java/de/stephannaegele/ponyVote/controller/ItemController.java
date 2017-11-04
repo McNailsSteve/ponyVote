@@ -32,7 +32,7 @@ public class ItemController {
     @RequestMapping(value = "/item/new")
     public String showNewItem(Model model) {
         model.addAttribute("item", new Item());
-        return "item/addEditItem";
+        return "/templates/item/addEditItem";
     }
 
     @RequestMapping(value = "/item/")

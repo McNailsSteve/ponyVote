@@ -5,6 +5,7 @@ import de.stephannaegele.ponyVote.domain.Session;
 import de.stephannaegele.ponyVote.services.SessionService;
 import de.stephannaegele.ponyVote.views.SessionView;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import java.time.LocalDate;
 /**
  * @author Stephan Nägele
  */
+@Controller
 public class SessionController {
 
     private SessionService sessionService;
