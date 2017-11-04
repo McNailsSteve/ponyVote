@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.Set;
 
 /**
- * the Entity for all items of a session
+ * the Entity for all sessionItems of a session
  * Created by NgS on 30.09.2017.
  */
 @Entity

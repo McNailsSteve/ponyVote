@@ -26,4 +26,7 @@ public class SessionService {
         return (Set<Session>) sessionRepository.findAll();
     }
 
+    public Session save(Session session) {
+        return sessionRepository.save(session);
+    }
 }

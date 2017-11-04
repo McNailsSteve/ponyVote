@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <div class="table-responsive" th:if="${not #lists.isEmpty(items)}">
+                    <div class="table-responsive" th:if="${not #lists.isEmpty(sessionItems)}">
                         <table class="table table-responsive table-bordered table-hover ">
                             <thead>
                             <tr class="thread-inverse">
@@ -31,7 +31,7 @@
                             </thead>
                             <tbody>
                                 <!--/*@thymesVar id="item" type="de.stephannaegele.ponyVote.domain.Item"*/-->
-                                <tr th:each="item : ${items}">
+                                <tr th:each="item : ${sessionItems}">
                                     <td th:text="${item.id}">id</td>
                                     <td th:text="${item.headline}">headline</td>
                                     <td th:text="${item.date}">date</td>

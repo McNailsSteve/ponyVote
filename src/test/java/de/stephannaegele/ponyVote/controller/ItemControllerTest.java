@@ -73,7 +73,7 @@ public class ItemControllerTest {
         mockMvc.perform(get("/item/list"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("item/itemlist"))
-                .andExpect(model().attributeExists("items"));
+                .andExpect(model().attributeExists("sessionItems"));
 
         verify(itemService, times(1)).getAllItems();
     }

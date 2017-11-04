@@ -45,8 +45,8 @@ public class ItemController {
     @RequestMapping("/item/list")
     public String showAllItems(Model model) {
         List<Item> listOfAllItems = itemService.getAllItems();
-        log.info("Retrieving " + listOfAllItems.size() + " items!");
-        model.addAttribute("items", listOfAllItems);
+        log.info("Retrieving " + listOfAllItems.size() + " sessionItems!");
+        model.addAttribute("sessionItems", listOfAllItems);
         return "item/itemlist";
     }
 }

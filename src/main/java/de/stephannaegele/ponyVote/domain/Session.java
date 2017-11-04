@@ -1,6 +1,5 @@
 package de.stephannaegele.ponyVote.domain;
 
-import de.stephannaegele.ponyVote.controller.SessionController;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -24,7 +23,7 @@ public class Session implements PersistableEntity {
     private String headline;
 
     @OneToMany(mappedBy = "session")
-    private Set<Item> items;
+    private Set<Item> sessionItems;
 
     private Boolean votingClosed;
     private Boolean concluded;
@@ -39,19 +38,16 @@ public class Session implements PersistableEntity {
     private LocalDate modifiedDate;
 
     public Session() {
-        items = new HashSet<>();
+        sessionItems = new HashSet<>();
     }
 
-    public Session(String headline, Set<Item> items) {
+    public Session(String headline, Set<Item> sessionItems) {
         this.headline = headline;
-        this.items = items;
+        this.sessionItems = sessionItems;
     }
-
 
     public void addItem(Item item) {
-        items.add(item);
+        sessionItems.add(item);
     }
-
-
 
 }
