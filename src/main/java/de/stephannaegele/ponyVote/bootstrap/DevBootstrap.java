@@ -42,23 +42,19 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         // Second User
         User darth = new User("Vader", "Darth", "darklord");
 
-        userRepository.save(stephan);
-        userRepository.save(darth);
-
         // First Item
-        Item firstItem = new Item("wichtiges TOP", LocalDate.now(), "Das bewegt uns alle!", stephan);
+        Item firstItem = new Item("wichtiges TOP", LocalDate.now(), "Das bewegt uns alle!");
         // 2nd Item
-        Item secondItem = new Item("Make our voices heard!", LocalDate.now().minusDays(1), "Es fehlt eine Abstimmungsapp!", darth);
+        Item secondItem = new Item("Make our voices heard!", LocalDate.now().minusDays(1), "Es fehlt eine Abstimmungsapp!");
 
-        itemRepository.save(firstItem);
-        itemRepository.save(secondItem);
+        Session firstSession = new Session();
+        firstSession.setHeadline("erste ETW");
 
-        HashSet<Item> firstSessionItems = new HashSet<>();
-        firstSessionItems.add(firstItem);
-        firstSessionItems.add(secondItem);
+        sessionRepository.save(firstSession);
 
-        sessionRepository.save(new Session("First", firstSessionItems));
-        sessionRepository.save(new Session("Second", new HashSet<>()));
+        firstSession.addItem(firstItem);
+
+        sessionRepository.save(firstSession);
 
 
     }

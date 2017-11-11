@@ -5,6 +5,7 @@ import de.stephannaegele.ponyVote.domain.Session;
 import de.stephannaegele.ponyVote.repository.SessionRepository;
 import de.stephannaegele.ponyVote.services.ItemService;
 import de.stephannaegele.ponyVote.services.SessionService;
+import de.stephannaegele.ponyVote.views.SessionView;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -49,11 +50,11 @@ public class SessionControllerTest {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(sessionController).build();
         Session session = new SessionBuilder().withRandomId().withItems(5).get();
 
-
+        SessionView sessionView = new SessionView(session);
 
         when(sessionService.save(Mockito.any())).thenReturn(session);
 
-        mockMvc.perform(put("/session/", session))
+        mockMvc.perform(put("/session/", sessionView))
                 .andExpect(status().isOk())
                 .andExpect(view().name("session/" + session.getId().toString()));
 

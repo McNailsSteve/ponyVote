@@ -37,7 +37,7 @@ public class SessionController {
 
         SessionView sessionView = new SessionView(sessionService.getSession(sessionId));
         model.addAttribute("session", sessionView);
-        return "session";
+        return "session/addEditSession";
     }
 
     @RequestMapping("/session/new")

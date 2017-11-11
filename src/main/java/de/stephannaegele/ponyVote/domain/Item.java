@@ -1,6 +1,5 @@
 package de.stephannaegele.ponyVote.domain;
 
-import de.stephannaegele.ponyVote.controller.SessionController;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,17 +16,16 @@ import java.util.Set;
 @NoArgsConstructor
 public class Item implements PersistableEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String headline;
     private LocalDate date;
     private String summary;
     private Integer priorization;
     private Integer votes;
+
     @ManyToOne
     private Session session;
-    @OneToMany
-    private Set<User> votees;
 
     //TODO: add security
 
@@ -48,7 +46,6 @@ public class Item implements PersistableEntity {
         this.headline = headline;
         this.date = date;
         this.summary = summary;
-
     }
 
     @Override

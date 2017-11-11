@@ -19,11 +19,11 @@ import java.util.Set;
 @AllArgsConstructor
 public class Session implements PersistableEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String headline;
 
-    @OneToMany(mappedBy = "session")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "session")
     private Set<Item> sessionItems;
 
     private Boolean votingClosed;
@@ -48,7 +48,9 @@ public class Session implements PersistableEntity {
     }
 
     public void addItem(Item item) {
-        sessionItems.add(item);
+        if (sessionItems != null) {
+            sessionItems.add(item);
+        }
     }
 
 }

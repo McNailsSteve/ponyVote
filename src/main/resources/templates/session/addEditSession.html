@@ -35,7 +35,59 @@
                                 </div>
                             </div>
                         </div>
+
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h2 class="panel-title">Tagesordnungspunkte</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div th:if="${session.sessionItems != null}">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <th>ID</th>
+                                                    <th>Titel</th>
+                                                    <th>Stimmen</th>
+                                                    <th>Aktionen</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr th:each="top : ${session.sessionItems}">
+                                                        <td th:text="${top.id}">id</td>
+                                                        <td>headline</td>
+                                                        <td>0</td>
+                                                        <td>
+                                                            <a href="#"><span class="glyphicon glyphicon-edit"/></a>
+                                                            <a href="#"><span class="glyphicon glyphicon-trash"/></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+
+                                            </table>
+
+                                            <ul th:if="${not #lists.isEmpty(session.sessionItems)}">
+                                                <li th:each="top : *{sessionItems}" th:text="${top.headline}">top-Item</li>
+                                            </ul>
+                                        </div>
+                                        <div th:unless="${session.sessionItems != null}">
+                                            <ul>
+                                                <li>Es sind noch keine Tagesordungspunkte erfasst worden.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <a class="fa fa-camera-retro" href="#" role="button">+ Tagesordnungpunkt</a>
+                            </div>
+                        </div>
                     </div>
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
