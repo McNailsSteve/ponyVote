@@ -1,18 +1,14 @@
 package de.stephannaegele.ponyVote.controller;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import de.stephannaegele.ponyVote.domain.Session;
 import de.stephannaegele.ponyVote.services.SessionService;
 import de.stephannaegele.ponyVote.views.SessionView;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.print.attribute.standard.Severity;
-import java.time.LocalDate;
 
 /**
  * @author Stephan Nägele
@@ -51,6 +47,16 @@ public class SessionController {
         model.addAttribute("session", view );
 
         return "session/addEditSession";
+    }
+
+    @RequestMapping("/session/")
+    @PutMapping
+    public String addSession(Model model, SessionView view) {
+        Session newSession = view.mapTo();
+        Session savedSession = sessionService.save(newSession);
+        view.mapFrom(savedSession);
+        model.addAttribute("session", view);
+        return "session/" + savedSession.getId().toString();
     }
 
 }

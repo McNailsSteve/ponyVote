@@ -1,7 +1,10 @@
 package de.stephannaegele.ponyVote.builders;
 
+import de.stephannaegele.ponyVote.domain.Item;
 import de.stephannaegele.ponyVote.domain.Session;
 
+import java.time.LocalDate;
+import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class SessionBuilder implements BaseBuilder {
@@ -31,8 +34,23 @@ public class SessionBuilder implements BaseBuilder {
         return this;
     }
 
+    public SessionBuilder withItems(Set<Item> items) {
+        session.setSessionItems(items);
+        return this;
+    }
+
     @Override
     public Session get() {
         return session;
+    }
+
+    public SessionBuilder withHeadline(String headline) {
+        session.setHeadline(headline);
+        return this;
+    }
+
+    public SessionBuilder withSessionDate(LocalDate sessionDate) {
+        session.setSessionDate(sessionDate);
+        return this;
     }
 }
