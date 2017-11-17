@@ -2,6 +2,7 @@ package de.stephannaegele.ponyVote.views;
 
 import de.stephannaegele.ponyVote.builders.ItemBuilder;
 import de.stephannaegele.ponyVote.model.Item;
+import de.stephannaegele.ponyVote.model.Session;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,12 +20,17 @@ public class ItemView implements BaseView<Item> {
     private String headline;
     private LocalDate date;
     private String summary;
+    private Session session;
 
     public ItemView(Item item) {
         id = item.getId();
         headline = item.getHeadline();
         date = item.getDate();
         summary = item.getSummary();
+    }
+
+    public Session getSession() {
+        return session;
     }
 
     @Override

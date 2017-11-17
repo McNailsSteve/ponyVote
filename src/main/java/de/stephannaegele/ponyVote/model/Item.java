@@ -1,6 +1,7 @@
 package de.stephannaegele.ponyVote.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -13,26 +14,36 @@ import java.time.LocalDate;
  * Created by NgS on 30.09.2017.
  */
 @Data
-@NoArgsConstructor
+@EqualsAndHashCode(exclude = {"session"})
 @Entity
 public class Item {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String headline;
-    private LocalDate date;
     private String summary;
-    private Integer priorization;
-    private Integer votes;
+    private LocalDate date;
+
 
     @ManyToOne
     private Session session;
 
-    //TODO: add security
+    public Item() {
+    }
 
-    public Item(String headline) {
+    public Item(Long id, String headline, String summary, LocalDate date, Session session) {
+        this.id = id;
         this.headline = headline;
-        this.summary = new String();
+        this.summary = summary;
+        this.date = date;
+        this.session = session;
+    }
+
+    public Item(String headline, String summary, Session session) {
+        this.headline = headline;
+        this.summary = summary;
+        this.session = session;
     }
 
     public Item(String headline, String summary) {
@@ -40,10 +51,8 @@ public class Item {
         this.summary = summary;
     }
 
-    public Item(String headline, LocalDate date, String summary) {
+    public Item(String headline) {
         this.headline = headline;
-        this.date = date;
-        this.summary = summary;
     }
 
     public Item(Long id, String headline, String summary, LocalDate date) {
@@ -53,15 +62,8 @@ public class Item {
         this.date = date;
     }
 
-    public Item(String headline, LocalDate date, String summary, User createdBy) {
-        this.headline = headline;
+    public void setDate(LocalDate date) {
         this.date = date;
-        this.summary = summary;
-    }
-
-    public Item(String headline, String summary, Session session) {
-        this.headline = headline;
-        this.summary = summary;
-        this.session = session;
     }
 }
+

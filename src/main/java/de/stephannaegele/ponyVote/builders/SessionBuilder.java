@@ -34,11 +34,6 @@ public class SessionBuilder implements BaseBuilder {
         return this;
     }
 
-    public SessionBuilder withItems(Set<Item> items) {
-        session.setItems(items);
-        return this;
-    }
-
     @Override
     public Session get() {
         return session;

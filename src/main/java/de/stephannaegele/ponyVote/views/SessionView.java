@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @EqualsAndHashCode
@@ -55,15 +56,7 @@ public class SessionView implements BaseView<Session> {
         SessionBuilder sessionBuilder =  new SessionBuilder().withId(id)
                                                              .withHeadline(headline)
                                                              .withSessionDate(sessionDate);
-        if (sessionItems != null) {
-            sessionBuilder.withItems(
-                sessionItems.stream()
-                    .filter(Objects::nonNull)
-                    .map(itemView -> new Item(Long.valueOf(itemView.getId()),
-                            itemView.getHeadline(),
-                            itemView.getSummary(),
-                            itemView.getDate())).collect(Collectors.toSet()));
-        }
+
         return sessionBuilder.get();
     }
 
