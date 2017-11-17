@@ -1,7 +1,7 @@
 package de.stephannaegele.ponyVote.services;
 
 import de.stephannaegele.ponyVote.builders.ItemBuilder;
-import de.stephannaegele.ponyVote.domain.Item;
+import de.stephannaegele.ponyVote.model.Item;
 import de.stephannaegele.ponyVote.repository.ItemRepository;
 import org.junit.Before;
 import org.junit.Test;

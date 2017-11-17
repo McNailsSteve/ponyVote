@@ -1,4 +1,4 @@
-package de.stephannaegele.ponyVote.domain;
+package de.stephannaegele.ponyVote.model;
 
 import java.time.LocalDate;
 /**

@@ -1,9 +1,7 @@
 package de.stephannaegele.ponyVote.controller;
 
 import de.stephannaegele.ponyVote.builders.SessionBuilder;
-import de.stephannaegele.ponyVote.domain.Session;
-import de.stephannaegele.ponyVote.repository.SessionRepository;
-import de.stephannaegele.ponyVote.services.ItemService;
+import de.stephannaegele.ponyVote.model.Session;
 import de.stephannaegele.ponyVote.services.SessionService;
 import de.stephannaegele.ponyVote.views.SessionView;
 import org.junit.Before;
@@ -15,7 +13,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;

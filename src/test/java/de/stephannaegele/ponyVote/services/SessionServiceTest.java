@@ -1,7 +1,7 @@
 package de.stephannaegele.ponyVote.services;
 
 import de.stephannaegele.ponyVote.builders.SessionBuilder;
-import de.stephannaegele.ponyVote.domain.Session;
+import de.stephannaegele.ponyVote.model.Session;
 import de.stephannaegele.ponyVote.repository.SessionRepository;
 import org.junit.Before;
 import org.junit.Test;

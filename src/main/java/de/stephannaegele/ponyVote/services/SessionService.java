@@ -1,8 +1,7 @@
 package de.stephannaegele.ponyVote.services;
 
-import de.stephannaegele.ponyVote.domain.Session;
+import de.stephannaegele.ponyVote.model.Session;
 import de.stephannaegele.ponyVote.repository.SessionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

@@ -30,7 +30,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <!--/*@thymesVar id="item" type="de.stephannaegele.ponyVote.domain.Item"*/-->
+                            <!--/*@thymesVar id="item" type="de.stephannaegele.ponyVote.model.Item"*/-->
                                 <tr th:each="item : ${sessionItems}">
                                     <td th:text="${item.id}">id</td>
                                     <td th:text="${item.headline}">headline</td>

@@ -1,20 +1,21 @@
-package de.stephannaegele.ponyVote.domain;
+package de.stephannaegele.ponyVote.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Set;
+
+
 
 /**
  * the Entity for all sessionItems of a session
  * Created by NgS on 30.09.2017.
  */
-@Entity
 @Data
 @NoArgsConstructor
-public class Item implements PersistableEntity {
+@Entity
+public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,6 +29,16 @@ public class Item implements PersistableEntity {
     private Session session;
 
     //TODO: add security
+
+    public Item(String headline) {
+        this.headline = headline;
+        this.summary = new String();
+    }
+
+    public Item(String headline, String summary) {
+        this.headline = headline;
+        this.summary = summary;
+    }
 
     public Item(String headline, LocalDate date, String summary) {
         this.headline = headline;
@@ -48,14 +59,9 @@ public class Item implements PersistableEntity {
         this.summary = summary;
     }
 
-    @Override
-    public LocalDate getCreationDate() {
-        return null;
+    public Item(String headline, String summary, Session session) {
+        this.headline = headline;
+        this.summary = summary;
+        this.session = session;
     }
-
-    @Override
-    public LocalDate getModifiedDate() {
-        return null;
-    }
-
 }

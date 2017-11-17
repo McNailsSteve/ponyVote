@@ -1,13 +1,13 @@
-package de.stephannaegele.ponyVote.domain;
+package de.stephannaegele.ponyVote.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -17,14 +17,15 @@ import java.util.Set;
 @Entity
 @Data
 @AllArgsConstructor
-public class Session implements PersistableEntity {
+@NoArgsConstructor
+public class Session {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String headline;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "session")
-    private Set<Item> sessionItems;
+    private Set<Item> items = new HashSet<>();
 
     private Boolean votingClosed;
     private Boolean concluded;
@@ -38,19 +39,15 @@ public class Session implements PersistableEntity {
     private LocalDate creationDate;
     private LocalDate modifiedDate;
 
-    public Session() {
-        sessionItems = new HashSet<>();
-    }
-
-    public Session(String headline, Set<Item> sessionItems) {
+    public Session(String headline, Set<Item> items) {
         this.headline = headline;
-        this.sessionItems = sessionItems;
+        this.items = items;
     }
 
-    public void addItem(Item item) {
-        if (sessionItems != null) {
-            sessionItems.add(item);
-        }
+    public Session addItem(Item item) {
+        item.setSession(this);
+        items.add(item);
+        return this;
     }
 
 }

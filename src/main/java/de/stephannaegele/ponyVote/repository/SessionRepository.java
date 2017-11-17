@@ -1,6 +1,6 @@
 package de.stephannaegele.ponyVote.repository;
 
-import de.stephannaegele.ponyVote.domain.Session;
+import de.stephannaegele.ponyVote.model.Session;
 import org.springframework.data.repository.CrudRepository;
 
 /**

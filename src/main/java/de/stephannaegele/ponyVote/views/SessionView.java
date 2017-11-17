@@ -1,8 +1,8 @@
 package de.stephannaegele.ponyVote.views;
 
 import de.stephannaegele.ponyVote.builders.SessionBuilder;
-import de.stephannaegele.ponyVote.domain.Item;
-import de.stephannaegele.ponyVote.domain.Session;
+import de.stephannaegele.ponyVote.model.Item;
+import de.stephannaegele.ponyVote.model.Session;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -27,7 +27,7 @@ public class SessionView implements BaseView<Session> {
         this.id = session.getId();
         this.headline = session.getHeadline();
         this.sessionDate = session.getSessionDate();
-        this.sessionItems = session.getSessionItems().stream()
+        this.sessionItems = session.getItems().stream()
                                                         .map(sessionItem -> new ItemView(sessionItem))
                                                         .collect(Collectors.toSet());
     }
@@ -71,7 +71,7 @@ public class SessionView implements BaseView<Session> {
     public void mapFrom(Session session) {
         this.headline = session.getHeadline();
         this.sessionDate = session.getSessionDate();
-        this.sessionItems = session.getSessionItems().stream()
+        this.sessionItems = session.getItems().stream()
                                                      .map(item -> new ItemView(item))
                                                      .collect(Collectors.toSet());
     }

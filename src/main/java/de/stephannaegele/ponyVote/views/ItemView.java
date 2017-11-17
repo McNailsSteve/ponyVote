@@ -1,18 +1,18 @@
 package de.stephannaegele.ponyVote.views;
 
 import de.stephannaegele.ponyVote.builders.ItemBuilder;
-import de.stephannaegele.ponyVote.domain.Item;
+import de.stephannaegele.ponyVote.model.Item;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
 @EqualsAndHashCode
 @Setter
 @Getter
+@NoArgsConstructor
 public class ItemView implements BaseView<Item> {
 
     private Long id;
@@ -27,7 +27,6 @@ public class ItemView implements BaseView<Item> {
         summary = item.getSummary();
     }
 
-
     @Override
     public Item mapTo() {
         return new ItemBuilder().withId(id)
@@ -41,5 +40,9 @@ public class ItemView implements BaseView<Item> {
         this.id = item.getId();
         this.headline = item.getHeadline();
         this.date = item.getDate();
+    }
+
+    public boolean isNew() {
+        return id == null;
     }
 }

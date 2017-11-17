@@ -1,7 +1,7 @@
 package de.stephannaegele.ponyVote.builders;
 
-import de.stephannaegele.ponyVote.domain.Item;
-import de.stephannaegele.ponyVote.domain.Session;
+import de.stephannaegele.ponyVote.model.Item;
+import de.stephannaegele.ponyVote.model.Session;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -35,7 +35,7 @@ public class SessionBuilder implements BaseBuilder {
     }
 
     public SessionBuilder withItems(Set<Item> items) {
-        session.setSessionItems(items);
+        session.setItems(items);
         return this;
     }
 

@@ -1,6 +1,5 @@
-package de.stephannaegele.ponyVote.domain;
+package de.stephannaegele.ponyVote.model;
 
-import de.stephannaegele.ponyVote.controller.SessionController;
 import lombok.Data;
 
 import javax.persistence.Entity;

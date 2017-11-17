@@ -1,6 +1,6 @@
 package de.stephannaegele.ponyVote.controller;
 
-import de.stephannaegele.ponyVote.domain.Session;
+import de.stephannaegele.ponyVote.model.Session;
 import de.stephannaegele.ponyVote.services.SessionService;
 import de.stephannaegele.ponyVote.views.SessionView;
 import org.springframework.stereotype.Controller;

@@ -1,6 +1,6 @@
 package de.stephannaegele.ponyVote.commands;
 
-import de.stephannaegele.ponyVote.domain.Item;
+import de.stephannaegele.ponyVote.model.Item;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +9,6 @@ import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.stream.StreamSupport;
 
 @Component
 @Data
